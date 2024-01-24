@@ -1,0 +1,14 @@
+package components
+
+import "time"
+
+templ HTMX() {
+    <script src="/htmx.min.js"></script>
+}
+
+templ Header() {
+    <!DOCTYPE html>
+    @HTMX()
+
+    @Timer(time.Now(), time.Unix(0, 0), "10s")
+}

@@ -1,0 +1,16 @@
+package components
+
+import (
+    "time"
+    "fmt"
+)
+
+templ Timer(startTime, currTime time.Time, pollFreq string) {
+    <div id="timer" hx-trigger={"every "+pollFreq} hx-get="/timer" hx-target="#timer" hx-swap="outerhtml">
+        @ClockDisplay(currTime) <p>/</p> @ClockDisplay(startTime)
+    </div>
+}
+
+templ ClockDisplay(clk time.Time) {
+    <h2>{fmt.Sprintf("%02d:%02d:%02d", clk.Hour(), clk.Minute(), clk.Second())}</h2>
+}
